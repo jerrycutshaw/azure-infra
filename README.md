@@ -1,5 +1,8 @@
 # azure-infra
 
+# Project Structure
+
+```
 infrastructure/
 ├── env/
 │   ├── dev/
@@ -29,3 +32,4 @@ infrastructure/
 │       └── outputs.tf
 ├── .gitignore
 └── README.md
+```
