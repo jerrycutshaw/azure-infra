@@ -29,11 +29,12 @@ resource "azurerm_kubernetes_cluster" "aks" {
   # Default system node pool (non-spot)
   default_node_pool {
     name                = "system"
-    node_count          = 2
-    vm_size            = "Standard_D2ps_v5"  # Updated to available VM size
+    node_count          = 1
+    vm_size            = "Standard_B2ps_v2"  # Smallest production size + Standard_D2ps_v5 Updated to available VM size.  Others to consider:  Standard_B2s,Standard_B2ps_v2, Standard_B2ms, Standard_A2_v2
+
     enable_auto_scaling = true
-    min_count          = 2
-    max_count          = 4
+    min_count          = 1
+    max_count          = 3
     
     # System pools should not use spot instances for reliability
     type = "VirtualMachineScaleSets"
@@ -91,16 +92,3 @@ resource "azurerm_kubernetes_cluster_node_pool" "spot" {
   }
 }
 
-# Outputs
-output "kube_config" {
-  value     = azurerm_kubernetes_cluster.aks.kube_config_raw
-  sensitive = true
-}
-
-output "cluster_name" {
-  value = azurerm_kubernetes_cluster.aks.name
-}
-
-output "spot_pool_name" {
-  value = azurerm_kubernetes_cluster_node_pool.spot.name
-}
