@@ -1,3 +1,5 @@
+
+
 # Configure Azure provider
 terraform {
   required_providers {
@@ -14,7 +16,7 @@ provider "azurerm" {
 
 # Create resource group
 resource "azurerm_resource_group" "aks_rg" {
-  name     = "aks-resource-group"
+  name     = "dev-resource-group"
   location = "eastus"
 }
 
