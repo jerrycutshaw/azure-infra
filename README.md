@@ -33,3 +33,12 @@ infrastructure/
 ├── .gitignore
 └── README.md
 ```
+
+NOTE:  To apply from scratch follow these steps:
+1.  Go to /state folder and apply terraform.  This setups up buckets and remote state
+2.  Go to your desired environment (only dev at the moment of writing) and apply from there it should work fine.
+
+Manifest:
+- Decoupled state from environments and services
+- Remote state setup in BLOB storage
+- AKS cluster with spot instances 
